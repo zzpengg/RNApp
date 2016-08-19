@@ -12,6 +12,7 @@ import {
   TextInput,
   TouchableOpacity,
   TouchableHighlight,
+  Image,
   View
 } from 'react-native';
 
@@ -23,6 +24,7 @@ class ProjectName extends Component {
       height: 170,
       weight: 60,
       BMI: 0,
+      poc: 123,
     }
   }
   onPressButton = () => {
@@ -65,7 +67,16 @@ class ProjectName extends Component {
           Double tap R on your keyboard to reload,{'\n'}
           Shake or press menu button for dev menu
         </Text>
+        <TextInput 
+          style={styles.instructions}
+          onChangeText={ (poc) => this.setState({poc}) }
+        />
+        <Image
+          style={{ width: 60, height: 70 }}
+          source={{uri: `https://pokeadvisor.com/img/mon/${this.state.poc}.png`}}
+        />
       </View>
+      
     );
   }
 }
