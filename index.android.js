@@ -25,6 +25,7 @@ class ProjectName extends Component {
       weight: 60,
       BMI: 0,
       poc: 123,
+      color: '#ff5533'
     }
   }
   onPressButton = () => {
@@ -32,9 +33,21 @@ class ProjectName extends Component {
     const BMIanswer = this.state.weight/(this.state.height*this.state.height/10000) ;
     this.setState({BMI:BMIanswer});
   }
+  changeButton1 = () => {
+    console.log('pressed');
+    this.setState({
+      color: '#FF5FFF'
+    })
+  }
+  changeButton2 = () => {
+    console.log('pressed');
+    this.setState({
+      color: '#FF8FFF'
+    })
+  }
   render() {
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, {backgroundColor: this.state.color}]}>
         <TouchableOpacity>
           <Text>{this.state.BMI}</Text>
         </TouchableOpacity>
@@ -75,6 +88,12 @@ class ProjectName extends Component {
           style={{ width: 60, height: 70 }}
           source={{uri: `https://pokeadvisor.com/img/mon/${this.state.poc}.png`}}
         />
+        <TouchableHighlight onPress={this.changeButton1}>
+          <Text>Color1</Text>
+        </TouchableHighlight>
+        <TouchableHighlight onPress={this.changeButton2}>
+          <Text>Color2</Text>
+        </TouchableHighlight>
       </View>
       
     );
@@ -86,7 +105,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
   },
   welcome: {
     fontSize: 20,
